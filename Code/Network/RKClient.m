@@ -319,11 +319,7 @@ NSString *RKPathAppendQueryParams(NSString *resourcePath, NSDictionary *queryPar
         // Determine reachability strategy (if user has not already done so)
         if (self.reachabilityObserver == nil) {
             NSString *hostName = [newBaseURL host];
-            if ([hostName isEqualToString:@"localhost"] || [hostName isIPAddress]) {
-                self.reachabilityObserver = [RKReachabilityObserver reachabilityObserverForHost:hostName];
-            } else {
-                self.reachabilityObserver = [RKReachabilityObserver reachabilityObserverForInternet];
-            }
+            self.reachabilityObserver = [RKReachabilityObserver reachabilityObserverForHost:hostName];
         }
     }
 }
